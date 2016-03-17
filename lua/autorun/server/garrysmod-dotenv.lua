@@ -28,6 +28,7 @@ local function Initialize()
 					ENV[key] = value
 				end
 			end )
+			hook.Call( "dotenvFinished" )
 			MsgC( Color( 137, 222, 255 ), "[dotenv] " , Color( 0, 255, 0 ),  filename .. " loaded!\r\n" )
 		end
 	else

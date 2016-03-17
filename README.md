@@ -16,6 +16,14 @@ key = value
 ...
 ```
 
+The hook "dotenvFinished" is called when the Module has finished loading. Add a Hook like this to load something afterwards. 
+Should be nearly identical to GM:Initialize()
+
+```
+hook.Add( "dotenvFinished", "your-unique-name", function() dosomething() end)
+```
+
+
 Helper
 =======================
 
