@@ -5,7 +5,7 @@ local function Initialize()
 		// Read the .env File
 		local rawdata = file.Read( filename, "DATA" )
 		// Split into a Table of all Lines
-		local dataTable = string.Explode( "\r\n", rawdata )
+		local dataTable = string.Explode( "\n", rawdata )
 		// Check that the File isn't empty
 		if table.Count( dataTable ) == 0 or string.Trim( rawdata ) == "" then
 			// File is empty
