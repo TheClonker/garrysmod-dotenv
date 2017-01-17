@@ -29,7 +29,7 @@ if file.Exists( filename, "DATA" ) then
 		end
 		//everything finished loading, calling hook
 		MsgC( Color( 137, 222, 255 ), "[dotenv] " , Color( 0, 255, 0 ),  filename .. " loaded!\r\n" )
-		hook.Call( "dotenvFinished" )
+		hook.Add( "Initialize", "dotenv_init", function() hook.Call( "dotenvFinished" ) end )
 	end
 else
 	// File not found
