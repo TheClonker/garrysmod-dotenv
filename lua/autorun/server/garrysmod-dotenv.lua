@@ -1,3 +1,13 @@
+// Helper Functions
+function getenv( id, default )
+	return ENV[id] or default or nil
+end
+
+function setenv( id, data )
+	ENV[id] = data
+	return true
+end
+
 local filename = hook.Call( "dotenvInitializing" ) or ".env" //Custom .env Filename
 ENV = {} //Global Enviroment Var
 if file.Exists( filename, "DATA" ) then
@@ -29,21 +39,11 @@ if file.Exists( filename, "DATA" ) then
 		end
 		//everything finished loading, calling hook
 		MsgC( Color( 137, 222, 255 ), "[dotenv] " , Color( 0, 255, 0 ),  filename .. " loaded!\r\n" )
-		hook.Add( "Initialize", "dotenv_init", function() hook.Call( "dotenvFinished" ) end )
+		hook.Call( "dotenvFinished" )
 	end
 else
 	// File not found
 	MsgC( Color( 137, 222, 255 ), "[dotenv] " , Color( 255, 0, 0 ), filename .. " not found! Aborting!\r\n" )
-end
-
-// Helper Functions
-function getenv( id, default )
-	return ENV[id] or default or nil
-end
-
-function setenv( id, data )
-	ENV[id] = data
-	return true
 end
 
 // Hook to overwrite the filename to load eg. production.env, development.env
